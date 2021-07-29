@@ -9,7 +9,7 @@ as west, with two available actions.
 
 class Room
 {
-  private String description
+  private String description;
   private Hashtable exits;
   private Hashtable actions;
 
@@ -17,7 +17,8 @@ class Room
 This creates a room described "description".
 */
   public Room(String description)
-    this.descrption = descritpion;
+  {
+    this.description = description;
     exits = new Hashtable();
     actions = new Hashtable();
 }
@@ -41,7 +42,7 @@ public void setExist(Room north, Room east, Room south, Room west)
 Describes the actions possible within the room. This is also dependant
 on if a room contains an object.
 */
-public void setActions(Room search, Room pickUp)
+public void setActions(Room search, Room pickup)
 {
   if(search != null)
     actions.put("search", search);
@@ -62,7 +63,7 @@ Return long description for the room.
 */
 public String longDescription()
 {
-  return "You are in " + descrption + ".\n" + exitString() + ".\n" + "actions available are: " + actionString();
+  return "You are in " + description + ".\n" + exitString() + ".\n" + "actions available are: " + actionString();
 }
 
 /**
@@ -70,7 +71,7 @@ Return string describing room's exits.
 */
 private String exitString()
 {
-  String returnString = "Exits:"
+  String returnString = "Exits:";
   Enumeration keys = exits.keys();
   while(keys.hasMoreElements())
     returnString += " " + keys.nextElement();
@@ -82,10 +83,10 @@ Return string describing room's actions.
 */
 private String actionString()
 {
-  String returnActionString = "Actions:"
+  String returnActionString = "Actions:";
   Enumeration keysAction = actions.keys();
   while(keysAction.hasMoreElements())
-    returnActionString =+ " " + keysAction.nextElement();
+    returnActionString += " " + keysAction.nextElement();
   return returnActionString;
 }
 
