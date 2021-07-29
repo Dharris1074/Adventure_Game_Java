@@ -1,6 +1,6 @@
-/** This class will demonstrate  the parseing of commands such as 
+/** This class will demonstrate  the parsing of commands such as 
  * "pickup map"
- * Comamnds will first be verified, then accepted. 
+ *  Commands will first be verified, then accepted. 
 */
 
 class Command
@@ -16,18 +16,22 @@ class Command
         this.secondWord = secondWord;
     }
 
+/** Return first word, if not understood it returns null */
     public String getCommandWord() {
         return commandWord;
     }
 
+/** Return second word, if not understood it returns null */
     public String getSecondWord() {
         return secondWord;
     }
 
+/** Return true if command not understood */
     public boolean isUnknown() {
         return (commandWord == null);
     }
-
+    
+/** Return true if command has second word */
     public boolean hasSecondWord() {
         return (secondWord != null);
     }
