@@ -26,7 +26,8 @@ public class Parser {
 /** 
  * Get new command from input terminal
  */
-    public Command getCommand() {
+    public Command getCommand() 
+    {
         String inputLine = ""; // full input line
         String word1;
         String word2;
@@ -34,10 +35,12 @@ public class Parser {
         System.out.print("> "); // terminal prompt
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        try {
+        try 
+        {
             inputLine = reader.readLine();
         }
-        catch(java.io.IOException exc) {
+        catch(java.io.IOException exc) 
+        {
             System.out.println("There was an error during reading: " + exc.getMessage());
         }
 

@@ -6,7 +6,7 @@
  * commands that the parser returns.
 */
 
-public class Game 
+class Game 
 {
     private Parser parser;
     private Room currentRoom;
@@ -14,7 +14,8 @@ public class Game
 
     public Game() 
     {
-        createRooms();parser = new Parser();
+        createRooms();
+        parser = new Parser();
     }
 
     private void createRooms() 
@@ -22,10 +23,10 @@ public class Game
         Room outside, lab, tavern, study, armory;
 
         outside = new Room("Outside the strange mansion");
-        lab = new Room("There are bodies everywhere");
-        tavern = new Room("Still stinks of beer, but there's nobody here.");
+        lab = new Room("A lab, Ttere are bodies everywhere");
+        tavern = new Room("A Tavern, it still stinks of beer, but there's nobody here.");
         study = new Room("A smaller offshoot of the lab, there are books everywhere.");
-        armory = new Room("There are weapons everywhere");
+        armory = new Room("An armory, there are weapons everywhere");
 
         outside.setExits(null, lab, study, tavern);
         lab.setExits(null, null, null, outside);
@@ -34,7 +35,7 @@ public class Game
         armory.setExits(null, outside, null, null);
 
         currentRoom = outside;
-
+    }
         public void play() 
         {
             
@@ -46,7 +47,7 @@ public class Game
                 Command command = parser.getCommand();
                 finished = processCommand(command);
             }
-            System.out.println("Thank you for playing. Good bye.")
+            System.out.println("Thank you for playing. Good bye.");
         }
 
         private void printWelcome() 
@@ -68,10 +69,10 @@ public class Game
             }
             
             String commandWord = command.getCommandWord();
-            if (comamndWord.equals("help"))
+            if (commandWord.equals("help"))
                 printHelp();
             else if (commandWord.equals("go"))
-                goRoom(Command);
+                goRoom(command);
             else if (commandWord.equals("quit"))
             {
                 if(command.hasSecondWord())
@@ -84,7 +85,7 @@ public class Game
         private void printHelp()
         {
             System.out.println("You are lost, you are alone. You wander aimlessly");
-            System.out.println("Your command words are:")
+            System.out.println("Your command words are:");
             parser.showCommands();
         }
 
@@ -92,16 +93,16 @@ public class Game
         {
             if(!command.hasSecondWord())
             {
-                System.out.println("Go where(north, south..?")
+                System.out.println("Go where(north, south..?");
                 return;
             }
 
             String direction = command.getSecondWord();
 
-            Room nextRoom = currentRoom.nextAction(direction);
+            Room nextRoom = currentRoom.nextRoom(direction);
 
             if (nextRoom == null)
-                System.out.println("There is no door!")
+                System.out.println("There is no door!");
             else
             {
                 currentRoom = nextRoom;
@@ -109,4 +110,3 @@ public class Game
             }
         }
     }
-}

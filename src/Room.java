@@ -1,5 +1,6 @@
 
 import java.util.Hashtable;
+import java.util.Enumeration;
 
 /**
 Room represents a location that the player is currently in, setting the
@@ -11,7 +12,7 @@ class Room
 {
   private String description;
   private Hashtable exits;
-  private Hashtable actions;
+  // private Hashtable actions;
 
 /**
 This creates a room described "description".
@@ -20,21 +21,21 @@ This creates a room described "description".
   {
     this.description = description;
     exits = new Hashtable();
-    actions = new Hashtable();
+    // actions = new Hashtable();
 }
 
 /**
 Defines exits of the room, each direction leading to a neighbouring room.
 */
-public void setExist(Room north, Room east, Room south, Room west)
+public void setExits(Room north, Room east, Room south, Room west)
 {
     if(north != null)
       exits.put("north", north);
     if(east != null)
       exits.put("east", east);
-    if(north != null)
+    if(west != null)
       exits.put("west", west);
-    if(north != null)
+    if(south != null)
       exits.put("south", south);
 }
 
@@ -42,13 +43,13 @@ public void setExist(Room north, Room east, Room south, Room west)
 Describes the actions possible within the room. This is also dependant
 on if a room contains an object.
 */
-public void setActions(Room search, Room pickup)
-{
-  if(search != null)
-    actions.put("search", search);
-  if(pickup != null)
-    actions.put("pickup", pickup);
-}
+// public void setActions(Room search, Room pickup)
+// {
+//   if(search != null)
+//     actions.put("search", search);
+//   if(pickup != null)
+//     actions.put("pickup", pickup);
+// }
 
 /**
 Return short description of the room already defined in constructor.
@@ -63,7 +64,8 @@ Return long description for the room.
 */
 public String longDescription()
 {
-  return "You are in " + description + ".\n" + exitString() + ".\n" + "actions available are: " + actionString();
+  return "You are in " + description + ".\n" + exitString() + ".\n"; 
+  // + "actions available are: " + actionString();
 }
 
 /**
@@ -81,14 +83,14 @@ private String exitString()
 /**
 Return string describing room's actions.
 */
-private String actionString()
-{
-  String returnActionString = "Actions:";
-  Enumeration keysAction = actions.keys();
-  while(keysAction.hasMoreElements())
-    returnActionString += " " + keysAction.nextElement();
-  return returnActionString;
-}
+// private String actionString()
+// {
+//   String returnActionString = "Actions:";
+//   Enumeration keysAction = actions.keys();
+//   while(keysAction.hasMoreElements())
+//     returnActionString += " " + keysAction.nextElement();
+//   return returnActionString;
+// }
 
 /**
 Return to room that is reached if we go to direction. If there is no direction,
@@ -102,7 +104,8 @@ public Room nextRoom(String direction)
 /**
 Return action that is defined. If not action, return null.
 */
-public Room nextAction(String actionChoice)
-{
-  return(Room)actions.get(actionChoice);
+// public Room nextAction(String actionChoice)
+// {
+//   return(Room)actions.get(actionChoice);
+// }
 }
