@@ -23,7 +23,7 @@ class Game
         Room outside, lab, tavern, study, armory;
 
         outside = new Room("Outside the strange mansion");
-        lab = new Room("A lab, Ttere are bodies everywhere");
+        lab = new Room("A lab, there are bodies everywhere");
         tavern = new Room("A Tavern, it still stinks of beer, but there's nobody here.");
         study = new Room("A smaller offshoot of the lab, there are books everywhere.");
         armory = new Room("An armory, there are weapons everywhere");
@@ -38,9 +38,9 @@ class Game
     }
         public void play() 
         {
-            
+             
             printWelcome();
-
+            
             boolean finished = false;
             while (! finished) 
             {
